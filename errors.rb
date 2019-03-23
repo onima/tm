@@ -1,0 +1,2 @@
+class InvalidPrice < RuntimeError
+end
