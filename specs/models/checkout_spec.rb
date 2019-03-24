@@ -119,7 +119,7 @@ describe Checkout do
           Checkout.new([], 'USD')
         end
 
-        it 'raises an MismatchingCurrency Error' do
+        it 'raises a MismatchingCurrency Error' do
           checkout_with_usd_currency.scan(item_1_with_gbp_currency)
           expect do
             checkout_with_usd_currency.total_without_promotions
@@ -135,11 +135,11 @@ describe Checkout do
           Checkout.new([], 'USD')
         end
 
-        it 'raises an MismatchingCurrency Error' do
+        it 'does not raise a MismatchingCurrency Error' do
           checkout_with_usd_currency.scan(item_1_with_usd_currency)
           expect do
             checkout_with_usd_currency.total_without_promotions
-          end.not_to raise_error(MismatchingCurrency)
+          end.not_to raise_error
         end
       end
     end
