@@ -1,7 +1,7 @@
 class OverSixtyPromotion
 
   DISCOUNT_PERCENTAGE = 10
-  PRICE_LIMIT_BEFORE_DISCOUNT = 60
+  PRICE_LIMIT_BEFORE_DISCOUNT = 6000
 
   def discount(checkout)
     checkout.total_without_promotions > PRICE_LIMIT_BEFORE_DISCOUNT ? price_to_substract(checkout.total_without_promotions) : 0
