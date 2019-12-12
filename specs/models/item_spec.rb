@@ -9,7 +9,7 @@ describe Item do
       context 'when price is not a Money type' do
         it 'raises an InvalidPrice error' do
           expect do
-            Item.new(code: '001', name: 'Very Cheap Chair', price: 9)
+            Item.new(code: 'FR1', name: 'Fruit tea', price: 9)
           end.to raise_error(InvalidPrice)
         end
       end
@@ -17,7 +17,7 @@ describe Item do
       context 'when price is inferior or equal to 0' do
         it 'raises an InvalidPrice error' do
           expect do
-            Item.new(code: '001', name: 'Very Cheap Chair', price: Money.new(0, 'GBP'))
+            Item.new(code: 'FR1', name: 'Fruit tea', price: Money.new(0, 'USD'))
           end.to raise_error(InvalidPrice)
         end
       end
@@ -25,7 +25,7 @@ describe Item do
       context 'when price is a money type and superior to 0' do
         it 'creates a new item object' do
           expect(
-            Item.new(code: '001', name: 'Very Cheap Chair', price: Money.new(950, 'GBP')).class
+            Item.new(code: 'FR1', name: 'Fruit tea', price: Money.new(950, 'USD')).class
           ).to eq(Item)
         end
       end

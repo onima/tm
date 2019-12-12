@@ -2,28 +2,28 @@
 
 require_relative 'models/item'
 require_relative 'models/checkout'
-require_relative 'models/promotions/over_sixty_promotion'
-require_relative 'models/promotions/multiple_cheap_chairs_promotion'
+require_relative 'models/promotions/buy_one_get_one_free'
+require_relative 'models/promotions/multiple_apples'
 
-item1 = Item.new(code: '001', name: 'Very Cheap Chair', price: Money.new(925, 'GBP'))
-item2 = Item.new(code: '002', name: 'Little Table', price: Money.new(4500, 'GBP'))
-item3 = Item.new(code: '003', name: 'Funky Light', price: Money.new(1995, 'GBP'))
+item1 = Item.new(code: 'FR1', name: 'Fruit tea', price: Money.new(311, 'USD'))
+item2 = Item.new(code: 'AP1', name: 'Apple', price: Money.new(500, 'USD'))
+item3 = Item.new(code: 'CF1', name: 'Coffee', price: Money.new(1123, 'USD'))
 
-checkout1 = Checkout.new([OverSixtyPromotion.new, MultipleCheapChairsPromotion.new])
+checkout1 = Checkout.new([Promotions::MultipleApples.new])
 checkout1.scan(item1)
 checkout1.scan(item2)
+checkout1.scan(item1)
 checkout1.scan(item3)
 
-checkout2 = Checkout.new([OverSixtyPromotion.new, MultipleCheapChairsPromotion.new])
+checkout2 = Checkout.new([Promotions::BuyOneGetOneFree.new, Promotions::MultipleApples.new])
 checkout2.scan(item1)
-checkout2.scan(item3)
 checkout2.scan(item1)
 
-checkout3 = Checkout.new([OverSixtyPromotion.new, MultipleCheapChairsPromotion.new])
-checkout3.scan(item1)
+checkout3 = Checkout.new([Promotions::MultipleApples.new, Promotions::BuyOneGetOneFree.new])
+checkout3.scan(item2)
 checkout3.scan(item2)
 checkout3.scan(item1)
-checkout3.scan(item3)
+checkout3.scan(item2)
 
 puts('Test data')
 puts('----------')

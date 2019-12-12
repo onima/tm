@@ -3,7 +3,7 @@
 class Checkout
   attr_reader :currency, :items, :promotional_rules
 
-  def initialize(promotional_rules = [], currency = 'GBP')
+  def initialize(promotional_rules = [], currency = 'USD')
     @items = []
     @promotional_rules = promotional_rules
     @currency = currency
@@ -19,14 +19,14 @@ class Checkout
     Money.new(total_price_with_promotions, currency)
   end
 
+  private
+
   def total_without_promotions
     return 0 unless items?
     raise MismatchingCurrency if mismatching_currency?
 
     @items.map(&:price).reduce(&:+).cents
   end
-
-  private
 
   def items?
     !@items.map(&:price).reduce(&:+).nil?
