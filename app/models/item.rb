@@ -2,6 +2,7 @@
 
 require 'money'
 Money.locale_backend = nil
+Money.rounding_mode = BigDecimal::ROUND_HALF_UP
 
 class Item
   attr_reader :code, :name, :price
