@@ -3,7 +3,7 @@
 require_relative '../../services/items_fetcher'
 
 module Promotions
-  class MultipleApples
+  class Apples
     PRICE_WITH_PROMOTION = 450
     APPLE_CODE = 'AP1'
 

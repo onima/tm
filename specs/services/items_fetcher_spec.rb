@@ -3,7 +3,6 @@
 require_relative '../../app/services/items_fetcher'
 require_relative '../../app/models/checkout'
 require_relative '../../app/models/item'
-# require_relative '../../models/promotions/multiple_apples'
 
 describe ItemsFetcher do
   describe '.call' do

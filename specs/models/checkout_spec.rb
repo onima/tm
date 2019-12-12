@@ -3,7 +3,7 @@
 require_relative '../../app/models/item'
 require_relative '../../app/models/checkout'
 require_relative '../../app/models/promotions/buy_one_get_one_free'
-require_relative '../../app/models/promotions/multiple_apples'
+require_relative '../../app/models/promotions/apples'
 require_relative '../../errors'
 
 describe Checkout do
@@ -85,24 +85,24 @@ describe Checkout do
       end
     end
 
-    context 'when only MultipleApples promotion' do
-      let(:checkout_with_multiple_apples_promotion) do
-        Checkout.new([Promotions::MultipleApples.new])
+    context 'when only Apples promotion' do
+      let(:checkout_with_apples_promotion) do
+        Checkout.new([Promotions::Apples.new])
       end
 
       it 'returns total price minus MultipleApples promotion' do
-        3.times { checkout_with_multiple_apples_promotion.scan(apple_item) }
+        3.times { checkout_with_apples_promotion.scan(apple_item) }
 
-        expect(checkout_with_multiple_apples_promotion.total).to eq(Money.new(1350, 'USD'))
+        expect(checkout_with_apples_promotion.total).to eq(Money.new(1350, 'USD'))
       end
     end
 
-    context 'when both BuyOneGetOneFree and MultipleApples promotions' do
+    context 'when both BuyOneGetOneFree and Apples promotions' do
       let(:checkout_with_multiple_promotions) do
-        Checkout.new([Promotions::BuyOneGetOneFree.new, Promotions::MultipleApples.new])
+        Checkout.new([Promotions::BuyOneGetOneFree.new, Promotions::Apples.new])
       end
 
-      it 'returns total price minus BuyOneGetOneFree and MultipleApples promotions' do
+      it 'returns total price minus BuyOneGetOneFree and Apples promotions' do
         2.times { checkout_with_multiple_promotions.scan(fruit_tea_item) }
         3.times { checkout_with_multiple_promotions.scan(apple_item) }
 
