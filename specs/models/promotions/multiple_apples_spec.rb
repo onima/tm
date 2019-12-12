@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../models/promotions/multiple_apples'
-require_relative '../../../models/checkout'
-require_relative '../../../models/item'
+require_relative '../../../app/models/promotions/multiple_apples'
+require_relative '../../../app/models/checkout'
+require_relative '../../../app/models/item'
 
 describe Promotions::MultipleApples do
   subject(:multiple_apples_promotion) { Promotions::MultipleApples.new }

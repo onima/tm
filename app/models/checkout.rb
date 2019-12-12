@@ -25,18 +25,26 @@ class Checkout
     return 0 unless items?
     raise MismatchingCurrency if mismatching_currency?
 
-    @items.map(&:price).reduce(&:+).cents
+    total_price.cents
   end
 
   def items?
-    !@items.map(&:price).reduce(&:+).nil?
+    !@items.empty?
   end
 
   def mismatching_currency?
-    @items.map(&:price).reduce(&:+).currency.iso_code != currency
+    total_price.currency.iso_code != currency
+  end
+
+  def total_price
+    @items.map(&:price).reduce(&:+)
   end
 
   def total_price_with_promotions
-    total_without_promotions - @promotional_rules.map { |pr| pr.discount(self) }.reduce(&:+)
+    total_without_promotions - total_with_promotions
+  end
+
+  def total_with_promotions
+    @promotional_rules.map { |pr| pr.discount(self) }.reduce(&:+)
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../models/item'
+require_relative '../../app/models/item'
 require_relative '../../errors'
 
 describe Item do

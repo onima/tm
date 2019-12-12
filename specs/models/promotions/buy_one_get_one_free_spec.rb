@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../models/promotions/buy_one_get_one_free'
-require_relative '../../../models/checkout'
-require_relative '../../../models/item'
+require_relative '../../../app/models/promotions/buy_one_get_one_free'
+require_relative '../../../app/models/checkout'
+require_relative '../../../app/models/item'
 
 describe Promotions::BuyOneGetOneFree do
   subject(:buy_one_get_one_free_promotion) { Promotions::BuyOneGetOneFree.new }

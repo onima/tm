@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'models/item'
-require_relative 'models/checkout'
-require_relative 'models/promotions/buy_one_get_one_free'
-require_relative 'models/promotions/multiple_apples'
+require_relative 'app/models/item'
+require_relative 'app/models/checkout'
+require_relative 'app/models/promotions/buy_one_get_one_free'
+require_relative 'app/models/promotions/multiple_apples'
 
 item1 = Item.new(code: 'FR1', name: 'Fruit tea', price: Money.new(311, 'USD'))
 item2 = Item.new(code: 'AP1', name: 'Apple', price: Money.new(500, 'USD'))
