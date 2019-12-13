@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative '../services/total_checkout_calculator'
+
 class Checkout
   attr_reader :currency, :items, :promotional_rules
 
@@ -10,41 +12,10 @@ class Checkout
   end
 
   def scan(item)
-    @items << item
+    items << item
   end
 
   def total
-    return Money.new(total_without_promotions, currency) if @promotional_rules.empty?
-
-    Money.new(total_price_with_promotions, currency)
-  end
-
-  private
-
-  def total_without_promotions
-    return 0 unless items?
-    raise MismatchingCurrency if mismatching_currency?
-
-    total_price.cents
-  end
-
-  def items?
-    !@items.empty?
-  end
-
-  def mismatching_currency?
-    total_price.currency.iso_code != currency
-  end
-
-  def total_price
-    @items.map(&:price).reduce(&:+)
-  end
-
-  def total_price_with_promotions
-    total_without_promotions - total_with_promotions
-  end
-
-  def total_with_promotions
-    @promotional_rules.map { |pr| pr.discount(self) }.reduce(&:+)
+    TotalCheckoutCalculator.call(checkout: self)
   end
 end

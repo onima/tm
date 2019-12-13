@@ -7,8 +7,8 @@ module Promotions
     PRICE_WITH_PROMOTION = 450
     APPLE_CODE = 'AP1'
 
-    def discount(checkout)
-      apples = ItemsFetcher.call(items: checkout.items, code: APPLE_CODE)
+    def discount(items)
+      apples = ItemsFetcher.call(items: items, code: APPLE_CODE)
 
       apples.empty? || apples.size < 3 ? 0 : price_to_deduct(apples)
     end

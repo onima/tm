@@ -6,8 +6,8 @@ module Promotions
   class BuyOneGetOneFree
     FRUIT_TEA_CODE = 'FR1'
 
-    def discount(checkout)
-      fruit_teas = ItemsFetcher.call(items: checkout.items, code: FRUIT_TEA_CODE)
+    def discount(items)
+      fruit_teas = ItemsFetcher.call(items: items, code: FRUIT_TEA_CODE)
 
       fruit_teas.empty? ? 0 : price_to_deduct(fruit_teas)
     end

@@ -20,7 +20,7 @@ describe Promotions::BuyOneGetOneFree do
       it 'returns 0 as discount' do
         2.times { checkout.scan(apple_item) }
 
-        expect(subject.discount(checkout)).to eq(0)
+        expect(subject.discount(checkout.items)).to eq(0)
       end
     end
 
@@ -28,7 +28,7 @@ describe Promotions::BuyOneGetOneFree do
       it 'returns price of one item as discount' do
         2.times { checkout.scan(fruit_tea_item) }
 
-        expect(subject.discount(checkout)).to eq(fruit_tea_item.price.fractional)
+        expect(subject.discount(checkout.items)).to eq(fruit_tea_item.price.fractional)
       end
     end
 
@@ -36,7 +36,7 @@ describe Promotions::BuyOneGetOneFree do
       it 'returns price of one item as discount' do
         3.times { checkout.scan(fruit_tea_item) }
 
-        expect(subject.discount(checkout)).to eq(fruit_tea_item.price.fractional)
+        expect(subject.discount(checkout.items)).to eq(fruit_tea_item.price.fractional)
       end
     end
 
@@ -44,7 +44,7 @@ describe Promotions::BuyOneGetOneFree do
       it 'returns price of two items as discount' do
         4.times { checkout.scan(fruit_tea_item) }
 
-        expect(subject.discount(checkout)).to eq(fruit_tea_item.price.fractional * 2)
+        expect(subject.discount(checkout.items)).to eq(fruit_tea_item.price.fractional * 2)
       end
     end
   end

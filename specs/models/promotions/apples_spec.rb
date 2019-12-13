@@ -20,7 +20,7 @@ describe Promotions::Apples do
       it 'returns 0 as discount' do
         2.times { checkout.scan(fruit_tea_item) }
 
-        expect(subject.discount(checkout)).to eq(0)
+        expect(subject.discount(checkout.items)).to eq(0)
       end
     end
 
@@ -28,7 +28,7 @@ describe Promotions::Apples do
       it 'returns 0 as discount' do
         2.times { checkout.scan(apple_item) }
 
-        expect(subject.discount(checkout)).to eq(0)
+        expect(subject.discount(checkout.items)).to eq(0)
       end
     end
 
@@ -37,7 +37,7 @@ describe Promotions::Apples do
         3.times { checkout.scan(apple_item) }
         checkout.scan(fruit_tea_item)
 
-        expect(subject.discount(checkout)).to eq(150)
+        expect(subject.discount(checkout.items)).to eq(150)
       end
     end
   end
