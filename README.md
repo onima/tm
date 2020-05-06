@@ -1,4 +1,4 @@
-### TextMaster code challenge
+### TM code challenge
 
 ## Steps to do once you have cloned the repository :
 1) You need 2.6.5 ruby version installed on your machine (Use rbenv or rvm for this) and then install bundler with the specified ruby version
